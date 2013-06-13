@@ -1,0 +1,9 @@
+#!/bin/bash
+USER=root
+PASS=root
+HOST=localhost
+SCHEMA=schema
+DEST=/destiny/path/
+
+#dump
+mysqldump --lock-tables=false -c --insert-ignore --skip-set-charset -h $HOST -v -u $USER -p$PASS $SCHEMA|bzip2 > $DEST$SCHEMA-`date +"%Y%m%d-%H%M"`.sql.bz2
